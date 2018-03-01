@@ -24,6 +24,8 @@ func mainMenu(){
     
 """)
     
+    
+    //These functions should be used in inputHandler file or class
     let userInput = readLine()!
     
     if userInput == "add"{
