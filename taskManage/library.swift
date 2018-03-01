@@ -7,4 +7,5 @@
 //
 
 import Foundation
+//Consider refactoring this to a taskManager or taskLibrary class. Google singletons in swift and attempt to implement a singleton instance of the taskLibrary
 var taskLibrary = [UserTasks]()

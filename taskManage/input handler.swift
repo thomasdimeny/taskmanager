@@ -7,6 +7,8 @@
 //
 
 import Foundation
+//Instead of having all of these functions inside of the input handler file you should consider moving them to the main.swift.  A better alternative would be to move these functions to a new class called TaskManager or something similar. The architecture of file names and classes should be that the class or file only specifically handles the informtion stated in the file or class. Using an input handler is a good idea so that it can handle user input and call other functions, however the input handler shouldn't also contain the functions that it needs to call.
+
 func quitProgram() {
     print("""
 
@@ -52,6 +54,7 @@ func addTask() {
 
 func removeTask() {
     print("Which task would you like to remove? Type number 0 to remove the first task, 1 for the second task, etc.")
+    //Try to avoid using single letter variables in for loops, i is acceptable for the first variable but the second one should be named task or something similar
     for (n, c) in taskLibrary.enumerated()
     {
         if c.complete == false {

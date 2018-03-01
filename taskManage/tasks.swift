@@ -8,6 +8,7 @@
 
 import Foundation
 class UserTasks {
+    
     var name: String
     var describe: String
     var complete = false
