@@ -15,7 +15,7 @@ func mainMenu(){
     
     to remove a task, type 'remove'
     
-    to view a task, type 'view'
+    to view a task, type 'view' (view menu allows to mark tasks as complete)
 
     to view an incompleted task, type 'incomplete'
     
@@ -45,6 +45,5 @@ func mainMenu(){
     else {
         mainMenu()
     }
-    
     
 }

@@ -7,38 +7,39 @@
 //
 
 import Foundation
-func quitProgram() {
-    print("""
-
-Would you like to quit the program? type yes or no
-
-""")
-    let userInput = readLine()!
-    if userInput == "yes" {
-        exit(0)
-    } else if userInput == "no"{
-        mainMenu()
-    } else {
-        print("Valid value please")
-        quitProgram()
-    }
-}
-
-
+//func quitProgram() {
+//    print("""
+//
+//Would you like to quit the program? type yes or no
+//
+//""")
+//    let userInput = readLine()!
+//    if userInput == "yes" {
+//        exit(0)
+//    } else if userInput == "no"{
+//        mainMenu()
+//    } else {
+//        print("Valid value please")
+//        quitProgram()
+//    }
+//}
 
 
 
 
-//game manager functions below
+
+
 
 func addTask() {
     print("What task would you like to add? ")
     let taskName = readLine()!
-    print("How many days until it happens?")
+    print("How many days until it's due? Type a number")
     var taskDate = Int(readLine()!)!
     print("Add a description")
     let taskDesc = readLine()!
     let calendar = Calendar.current
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd/yyyy"
     let newCal = calendar.date(byAdding: .day, value: taskDate, to: Date())
     let papTask = UserTasks(name: taskName, describe: taskDesc, date: newCal!)
     taskLibrary.append(papTask)
@@ -46,6 +47,8 @@ func addTask() {
     
     mainMenu()
 }
+
+
 
 
 
@@ -65,7 +68,7 @@ func removeTask() {
             removeTask()
         } else {
             taskLibrary.remove(at: userInput)
-            quitProgram()
+            print("Task removed!")
             mainMenu()
         }
         
@@ -76,23 +79,31 @@ func removeTask() {
 }
 
 
+
+
+
 func viewTasks(){
     print("Here are your tasks, completed and uncompleted:")
     for (n, c) in taskLibrary.enumerated() {
         print("\(n): '\(c.name)'")
     }
+    print("Would you like to view a specific task? If not, you will be taken back to the main menu. Type yes or no.")
+    let userAnswer = readLine()!
+    if userAnswer == "no"{
+        mainMenu()
+    } else {
     print("To see a specific task, type the number that goes before it.")
     let userInput = Int(readLine()!)
     if let userInput = userInput {
         if userInput > taskLibrary.count - 1 {
             print("Please put in a valid number")
             viewTasks()
-        }  else {
+        } else {
             print(taskLibrary[userInput].name)
             print(taskLibrary[userInput].describe)
             print(taskLibrary[userInput].date)
         }
-        print("would you like to mark this task as complete?")
+        print("would you like to mark this task as complete? Type yes or no")
         let isComplete = readLine()!
         if isComplete == "yes"{
             taskLibrary[userInput].complete = true
@@ -101,8 +112,8 @@ func viewTasks(){
             print("this task remains incomplete.")
         }
     }
+    }
     mainMenu()
-    quitProgram()
     
 }
 
