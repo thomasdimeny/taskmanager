@@ -29,7 +29,6 @@ import Foundation
 
 
 
-
 func addTask() {
     print("What task would you like to add? ")
     let taskName = readLine()!
@@ -137,3 +136,4 @@ func incompleteTasks() {
     }
     mainMenu()
 }
+

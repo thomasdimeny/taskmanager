@@ -16,8 +16,12 @@ class UserTasks {
     init(name: String, describe: String, date: Date){
         self.name = name
         self.describe = describe
-        self.date = date
-    }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateString  = dateFormatter.string(from: date)
+        let formattedDate = dateFormatter.date(from: dateString)
+        self.date = formattedDate!
     
     
+}
 }
